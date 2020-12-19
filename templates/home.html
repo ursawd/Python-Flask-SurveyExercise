@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block content%}
+<h1>Welcome to Survey Exercise</h1>
+<div class="container" id="start_survey">
+  <!-- Survey title  -->
+  <p>{{ survey.title }}</p>
+  <!-- instructions  -->
+  <p>{{ survey.instructions }}</p>
+  <!-- button to start -->
+  <a href="/questions/0"><button type="button">Start Survey</button></a>
+</div>
+{% endblock %}

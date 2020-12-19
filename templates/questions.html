@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content%}
+<h1>Survey Questions</h1>
+
+<form action="/answer" method="post">
+  <p id="current-question">{{question.question}}</p>
+
+  {% for i in range(question.choices|length) %}
+  <label for="radio{{i}}">{{question.choices[i]}}</label>
+  <input
+    type="radio"
+    class="radio"
+    id="radio{{i}}"
+    name="choice"
+    value="{{question.choices[i]}}"
+  />
+  {% endfor %}
+  <br />
+  <input type="submit" value="Submit Answer" />
+</form>
+
+{% endblock %}

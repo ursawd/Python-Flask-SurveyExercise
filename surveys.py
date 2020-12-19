@@ -2,7 +2,11 @@ class Question:
     """Question on a questionnaire."""
 
     def __init__(self, question, choices=None, allow_text=False):
-        """Create question (assume Yes/No for choices."""
+        """Create question (assume Yes/No for choices.
+        question    string
+        choices     list    default=None
+        allow_text  boolean default=False
+        """
 
         if not choices:
             choices = ["Yes", "No"]
@@ -16,7 +20,11 @@ class Survey:
     """Questionnaire."""
 
     def __init__(self, title, instructions, questions):
-        """Create questionnaire."""
+        """Create questionnaire.
+        title        string
+        instructions string
+        questions    list of Question instance
+        """
 
         self.title = title
         self.instructions = instructions
@@ -29,10 +37,10 @@ satisfaction_survey = Survey(
     [
         Question("Have you shopped here before?"),
         Question("Did someone else shop with you today?"),
-        Question("On average, how much do you spend a month on frisbees?",
-                 ["Less than $10,000", "$10,000 or more"]),
+        Question("On average, how much do you spend a month on frisbees?", ["Less than $10,000", "$10,000 or more"]),
         Question("Are you likely to shop here again?"),
-    ])
+    ],
+)
 
 personality_quiz = Survey(
     "Rithm Personality Test",
@@ -40,12 +48,9 @@ personality_quiz = Survey(
     [
         Question("Do you ever dream about code?"),
         Question("Do you ever have nightmares about code?"),
-        Question("Do you prefer porcupines or hedgehogs?",
-                 ["Porcupines", "Hedgehogs"]),
-        Question("Which is the worst function name, and why?",
-                 ["do_stuff()", "run_me()", "wtf()"],
-                 allow_text=True),
-    ]
+        Question("Do you prefer porcupines or hedgehogs?", ["Porcupines", "Hedgehogs"]),
+        Question("Which is the worst function name, and why?", ["do_stuff()", "run_me()", "wtf()"], allow_text=True),
+    ],
 )
 
 surveys = {
