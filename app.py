@@ -22,7 +22,6 @@ def home():
 def questions(question_num):
     """ask specified question # """
 
-    #
     if len(responses) == len(SURVEY_NAME.questions):
         return render_template("/thanks.html")
 
@@ -32,6 +31,7 @@ def questions(question_num):
     # 0 based index, number of responses = index of next question
 
     if question_num != len(responses):
+        flash("Attempt to access questions out of order denied")
         question_num = len(responses)
 
     return render_template("questions.html", question=SURVEY_NAME.questions[question_num])

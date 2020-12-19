@@ -10,6 +10,7 @@ h1 {
   color: var(--stblue);
   text-align: center;
 }
+
 #main {
   width: 40vw;
   height: 40vh;
@@ -18,6 +19,10 @@ h1 {
 }
 #survey {
   padding: 10px;
+}
+.flashes {
+  color: red;
+  background-color: #fff;
 }
 .btn {
   background-color: var(--ltblue);
