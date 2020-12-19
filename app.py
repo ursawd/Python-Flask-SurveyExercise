@@ -20,12 +20,31 @@ def home():
 
 @app.route("/questions/<int:question_num>")
 def questions(question_num):
+    """ask specified question # """
+
+    #
+    if len(responses) == len(SURVEY_NAME.questions):
+        return render_template("/thanks.html")
+
+    # if requested question #(a 0 based index) is not equal
+    # to the number of questions answered, set the question #
+    # to be asked (an index) to the number of reponses. because of
+    # 0 based index, number of responses = index of next question
+
+    if question_num != len(responses):
+        question_num = len(responses)
+
     return render_template("questions.html", question=SURVEY_NAME.questions[question_num])
 
 
 @app.route("/answer", methods=["POST"])
 def answer():
+    """store response to question. ask next question"""
     responses.append(request.form["choice"])
+
+    # if # of responses = # of questions then completed
     if len(responses) == len(SURVEY_NAME.questions):
         return render_template("/thanks.html")
+
+    # {len(responses)} = ask next question based on # of answers
     return redirect(f"/questions/{len(responses)}")

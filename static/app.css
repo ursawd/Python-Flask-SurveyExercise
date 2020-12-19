@@ -1,0 +1,25 @@
+/* color palette 3680 */
+:root {
+  --tan: #e3cdb3;
+  --ltblue: #afb9c5;
+  --dkgrey: #484e52;
+  --stblue: #101e30;
+  --dark: #060607;
+}
+h1 {
+  color: var(--stblue);
+  text-align: center;
+}
+#main {
+  width: 40vw;
+  height: 40vh;
+  margin: 0 auto;
+  background-color: var(--tan);
+}
+#survey {
+  padding: 10px;
+}
+.btn {
+  background-color: var(--ltblue);
+  margin-top: 10px;
+}

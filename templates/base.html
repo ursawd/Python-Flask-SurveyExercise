@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Survey Exercise</title>
+    <link rel="stylesheet" href="/static/app.css" />
   </head>
   <body>
-    {% block content %} {% endblock %}
+    <div id="main">
+      <div id="survey">{% block content %} {% endblock %}</div>
+    </div>
   </body>
 </html>
