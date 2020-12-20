@@ -29,7 +29,7 @@ def home():
 def questions(question_num):
     """ask specified question # """
     if len(responses) == len(SURVEY.questions):
-        return render_template("/thankyou.html")
+        return render_template("/thankyou.html", survey=SURVEY, responses=responses)
 
     # if requested question #(a 0 based index) is not equal
     # to the number of questions answered, set the question #
