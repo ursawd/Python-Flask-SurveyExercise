@@ -28,6 +28,7 @@ def home():
 @app.route("/questions/<int:question_num>")
 def questions(question_num):
     """ask specified question # """
+    # if all questions asked any attempt to get question by id returns to Thank You page
     if len(responses) == len(SURVEY.questions):
         return render_template("/thankyou.html", survey=SURVEY, responses=responses)
 
