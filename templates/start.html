@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content%}
+<h1>Welcome to Survey Exercise</h1>
+<h3>Pick a survey or test to complete</h3>
+<div>
+  <form action="/home" method="POST">
+    {% for key in surveys %}
+    <input type="radio" class="radio" name="choice" value="{{key}}" />
+    <label for="radio">{{surveys[key].title}}</label>
+    <br />
+    {% endfor %}
+    <input class="btn" type="submit" value="Submit Answer" />
+  </form>
+</div>
+
+{% endblock %}

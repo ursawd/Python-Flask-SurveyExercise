@@ -5,6 +5,7 @@
   <h4>{{ survey.title }}</h4>
   <!-- instructions  -->
   <p>{{ survey.instructions }}</p>
+  <p>Number of questions {{ survey.questions|length }}</p>
   <!-- button to start -->
   <a href="/questions/0"
     ><button class="btn" type="button">Start Survey</button></a

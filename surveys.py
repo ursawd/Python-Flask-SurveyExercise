@@ -47,6 +47,7 @@ personality_quiz = Survey(
     "Learn more about yourself with our personality quiz!",
     [
         Question("Do you ever dream about code?"),
+        Question("Do you ever dream in color?"),
         Question("Do you ever have nightmares about code?"),
         Question("Do you prefer porcupines or hedgehogs?", ["Porcupines", "Hedgehogs"]),
         Question("Which is the worst function name, and why?", ["do_stuff()", "run_me()", "wtf()"], allow_text=True),

@@ -1,3 +1,7 @@
 {% extends 'base.html' %} {% block content%}
 <h1>Thank You!</h1>
-{% endblock %}
+<h3>Your answers are:</h3>
+
+{% for answer in answers%}
+<p>{{answer}}</p>
+{%endfor%} {% endblock %}
