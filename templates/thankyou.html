@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block content%}
+<h1>Thank You!</h1>
+<h3>Your responses were:</h3>
+<div id="answers">
+  <ul>
+    {% for i in range(responses|length)%}
+    <li><strong>{{survey.questions[i].question}}</strong> {{responses[i]}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
