@@ -21,6 +21,11 @@ def start():
 @app.route("/home", methods=["POST"])
 def home():
     global SURVEY
+
+    if "choice" not in request.form.keys():
+        flash("Must select survey or test")
+        return redirect("/")
+
     SURVEY = surveys[request.form["choice"]]
     return render_template("home.html", survey=SURVEY)
 

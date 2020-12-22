@@ -8,7 +8,15 @@
   </head>
   <body>
     <div id="main">
-      <div id="survey">{% block content %} {% endblock %}</div>
+      <div id="survey">
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}{% block content %} {% endblock %}
+      </div>
     </div>
   </body>
 </html>
