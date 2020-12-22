@@ -1,6 +1,6 @@
 """ Survey Exercise"""
 
-from flask import Flask, request, render_template, flash, redirect
+from flask import Flask, request, render_template, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 from surveys import Question, Survey, surveys
 
@@ -9,12 +9,18 @@ app.config["SECRET_KEY"] = "secretkey"
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
 debug = DebugToolbarExtension(app)
 
-responses = []
+# responses = []
 SURVEY = ""
 
 
-@app.route("/")
+@app.route("/", methods=["GET"])
+def begin():
+    return render_template("begin.html")
+
+
+@app.route("/session", methods=["POST"])
 def start():
+    session["responses"] = []
     return render_template("start.html", surveys=surveys)
 
 
@@ -34,6 +40,8 @@ def home():
 def questions(question_num):
     """ask specified question # """
     # if all questions asked any attempt to get question by id returns to Thank You page
+
+    responses = session["responses"]
     if len(responses) == len(SURVEY.questions):
         return render_template("/thankyou.html", survey=SURVEY, responses=responses)
 
@@ -49,12 +57,18 @@ def questions(question_num):
     return render_template("questions.html", question=SURVEY.questions[question_num])
 
 
-@app.route("/answer", methods=["POST"])
+@app.route("/answer", methods=["POST", "GET"])
 def answer():
     """store response to question. ask next question"""
-    responses.append(request.form["choice"])
+    responses = session["responses"]
+
+    if "choice" in request.form.keys():
+        responses.append(request.form["choice"])
+        session["responses"] = responses
+
     # if # of responses = # of questions then completed
     if len(responses) == len(SURVEY.questions):
         return render_template("/thankyou.html", survey=SURVEY, responses=responses)
+
     # {len(responses)} = ask next question based on # of answers
     return redirect(f"/questions/{len(responses)}")
